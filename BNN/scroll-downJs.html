@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			#condiv {
+				height: 500px;
+				width: 500px;
+				overflow: auto;
+				background: #82c93a;
+			}
+			#ele {
+				top: 70%;
+				height: 200px;
+				width: 200px;
+				background-color: green;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		
+<p>Click the button to scroll to the element.</p>
+
+		<button onclick="scrolldiv()">Scroll</button>
+		<div id="condiv">
+			<div id="ele">
+				GeeksforGeeks
+			</div>
+		</div>
+		<script>
+			function scrolldiv() {
+				window.scrollTo(0,
+		findPosition(document.getElementById("ele")));
+			}
+			function findPosition(obj) {
+				var currenttop = 0;
+				if (obj.offsetParent) {
+					do {
+						currenttop += obj.offsetTop;
+					} while ((obj = obj.offsetParent));
+					return [currenttop];
+				}
+			}
+		</script>
+	</body>
+</html>
